@@ -24,10 +24,25 @@ const signup = async(req,res,next)=>{
         })
     });
 };
+module.exports.signup=signup;
+
 //methode login creeeren
 const login = async(req,res,next)=>{
-const user = await User.authenticate()(req.body.username,req.body.password);
+const user = await User.authenticate()(req.body.username,req.body.password).then (result => {
+    res.json({
+        "status":"succes ingelogd",
+        "data":{
+            "user":result,
+            "message":result
+        } 
+
+    })
+}).catch(error=>{
+    res.json({
+        "status":"error, inloggen lukt niet"
+    })
+});
 };
 
-module.exports.signup=signup;
+
 module.exports.login=login;
