@@ -1,8 +1,55 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: auto;
 }
+html { height: 100%; display: flex; }
 
 a {
   color: #00B7FF;
+}
+
+/*register*/
+
+.container
+{
+  background-color: #FC6161;
+  width: 400px;
+  font-size: 1.25em;
+  padding: 1em;
+  color: white;
+}
+
+.btn
+{
+  font-size: 1em;
+  padding: 0.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
+  border: none;
+  background-color: transparent;
+  border: solid 2px white;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+  margin:auto;
+}
+
+.btn:active
+{
+  position: relative;
+  top: 1px;
+}
+
+.hidden
+{
+  display:none;
+}
+
+.alert
+{
+  background-color: #B4C4E7;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  color: #32549d;
 }
