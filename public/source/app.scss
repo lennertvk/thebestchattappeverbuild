@@ -30,6 +30,7 @@ body {
   width: 100%;
   color: #000;
   margin-bottom: 1em;
+
 }
 
 .hidden
@@ -39,8 +40,13 @@ body {
 
 .quote {
   margin:auto; 
+  text-align: center;
+  padding: 0.4em;
 }
 
 .quote a{
-  margin:auto; 
+  font-size: 0.7em;
+  color:$white;
+  text-decoration: none;
+  
 }

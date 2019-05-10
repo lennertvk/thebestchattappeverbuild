@@ -1,5 +1,7 @@
 //user model laden (registreren en inloggen) 
 const User = require('../models/User');
+// resuire de webtokens
+const jwt = require('jsonwebtokens');
 //ook het passport requiren
 //const passport=require('../passport/passport');
 
@@ -15,8 +17,15 @@ const signup = async(req,res,next)=>{
     await user.setPassword(password);
     //saven via mongoose
    await user.save().then(result=>{
+       let token =jwt.sign({
+           uid:result._id,
+           username:result.username
+       }, "MyVerySecretWord");
         res.json({
-            "status":"succes"
+            "status":"succes",
+            "data":{
+                "token": token
+            }
         })
     }).catch(error=>{
         res.json({
