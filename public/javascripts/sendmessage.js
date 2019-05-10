@@ -24,7 +24,7 @@ class Clicknumber {
                 that.loginput(data.input);
                 that.clearinput();;
             }
-        });
+        });///mongo atlas verder aansluiten app.js
 
          // allow for a click on our button
                 this.inputfield.addEventListener('keypress', function (e) {
