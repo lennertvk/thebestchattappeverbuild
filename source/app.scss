@@ -1,0 +1,31 @@
+@import 'variables';
+@import 'components/btn';
+@import 'components/alert';
+
+body {
+    padding: 50px;
+    font: $font;
+    margin: auto;
+  }
+  html 
+  { 
+      height: 100%; display: flex; 
+    }
+
+/*register*/
+
+.container
+{
+  background-color: $primary;
+  width: 400px;
+  font-size: 1.25em;
+  padding: 1em;
+  color: $white;
+  background-color: red;
+}
+
+
+.hidden
+{
+  display:none;
+}

@@ -6,4 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'emoji' });
 });
 
+/* GET signup page. */
+router.get('/signup', function(req, res, next) {
+  res.render('signup', { title: 'signup' });
+});
+
+/* GET login page. */
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'login' });
+});
+
 module.exports = router;

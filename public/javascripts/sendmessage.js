@@ -1,4 +1,3 @@
-// CLIENT
 class Clicknumber {
     constructor() {
         // set up some basic selectors we'll use often
@@ -24,8 +23,8 @@ class Clicknumber {
                 that.loginput(data.input);
                 that.clearinput();;
             }
-        });///mongo atlas verder aansluiten app.js
-
+        });
+        
          // allow for a click on our button
                 this.inputfield.addEventListener('keypress', function (e) {
                     var key = e.which || e.keyCode;
