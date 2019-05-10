@@ -19,6 +19,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "sass-google-fonts": "^1.0.1",
     "ws": "^7.0.0"
   },
   "devDependencies": {
