@@ -10,12 +10,11 @@ let btnSignup = document.querySelector('.form--btn').addEventListener('click', c
             {'Content-Type':'application/json'},
             body:JSON.stringify({
                 "username":username,
-                "password":password
-               
+                "password":password 
             })
         }).then(response => {
             return response.json();
-            console.log("succes");
+     
         }).then (json => {
             if (json.status==="succes"){
                 
@@ -28,7 +27,7 @@ let btnSignup = document.querySelector('.form--btn').addEventListener('click', c
                 //opslagen in local storage
                 localStorage.setItem("token",token);
                 // redirecten
-                window.location.href="index.ejs"
+                window.location.href="/";
             }
         });
 

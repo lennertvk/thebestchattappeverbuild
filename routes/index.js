@@ -16,4 +16,8 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'login' });
 });
 
+/* GET profile page. */
+router.get('/profile', function(req, res, next) {
+  res.render('profile', { title: 'profile' });
+});
 module.exports = router;

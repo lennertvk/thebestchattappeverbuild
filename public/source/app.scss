@@ -3,14 +3,15 @@
 @import 'components/alert';
 
 body {
-    padding: 50px;
-    font-family: $font;
-    margin: auto;
+  box-sizing: border-box;
+  font-family: $font;
+  margin:0;
+  width: 100vw;
   }
-  html 
+html 
   { 
-      height: 100%; display: flex; 
-    }
+  height: 100%; display: flex; 
+  }
 
 /*register*/
 
@@ -21,8 +22,9 @@ body {
   font-size: 1.25em;
   padding: 1em;
   color:$white;
+  margin: auto;
+  margin-top:8%;
 }
-
 
 .input--text
 {
@@ -49,4 +51,41 @@ body {
   color:$white;
   text-decoration: none;
   
+}
+
+/*NAVIGATION*/
+
+.navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  display: inline;
+  float: left;
+  margin-left:20px;
+}
+
+.navigation a{
+  display: block;
+  padding:8px;
+  
+  text-decoration: none;
+  color:$black;
+  
+}
+.navigation a:hover{
+  color:$primary;
+}
+
+.navigation a:active{
+  color:$active;
+}
+
+.navigation{
+  width: 100vw;
+  height: 35px;
+  padding: 20px;
+  background-color: $secondary;
 }

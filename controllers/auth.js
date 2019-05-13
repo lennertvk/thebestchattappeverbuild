@@ -43,7 +43,6 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
         return res.json({
             "status":"Failed",
             "message":"Failed to log in"
-            
     })
 }
     let token =jwt.sign({
@@ -68,3 +67,37 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
 
 
 module.exports.login=login;
+
+
+
+//methode profile update creeeren
+
+
+const update = async(req,res,next)=>{
+//komt uit frontend
+let username = req.body.username;
+console.log(username);
+
+User.findOneAndUpdate({
+    // hier moeten we bepalen welke user we gaan vervangen
+   username:"elkekie@hotmail.com"
+}, {
+   username:username
+  
+}).then(result => {
+    res.json({
+        "status":"succes",
+        "data":{
+            "user":result
+        } 
+    })
+
+}).catch(err=>{
+    
+    res.json({
+        "status":"error, niet geupdate"
+    })
+})
+
+};
+module.exports.update=update;
