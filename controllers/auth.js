@@ -76,10 +76,12 @@ module.exports.login=login;
 const update = async(req,res,next)=>{
 //komt uit frontend
 let username = req.body.username;
+//let password=req.body.newPassword;
 console.log(username);
+//console.log(newPassword);
 
 User.findOneAndUpdate({
-    // hier moeten we bepalen welke user we gaan vervangen
+    // hier moeten we bepalen welke user we gaan vervangen, werkt ng niet zo goed :) 
    username:"elkekie@hotmail.com"
 }, {
    username:username
