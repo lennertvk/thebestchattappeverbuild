@@ -11,7 +11,7 @@ var passport =require('./passport/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // mag de grbuiker de messages zien of niet?
-var messagesRouter = require('./api/v1/messages', passport.authenticate('jwt', { session: false }),apiMessagesRouter);
+//var messagesRouter = require('./api/v1/messages', passport.authenticate('jwt', { session: false }),apiMessagesRouter);
 
 
 var mongoose = require('mongoose');

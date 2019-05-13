@@ -37,12 +37,25 @@ module.exports.signup=signup;
 
 //methode login creeeren
 const login = async(req,res,next)=>{
-const user = await User.authenticate()(req.body.username,req.body.password).then (result => {
+const user = await User.authenticate()(req.body.username,req.body.password).then (result=> {
+//als er geen user is terug gekomen
+    if (!result.user){
+        return res.json({
+            "status":"Failed",
+            "message":"Failed to log in"
+            
+    })
+}
+    let token =jwt.sign({
+        uid:result.user._id,
+        username:result.user.username
+    }, "MyVerySecretWord");
+
     res.json({
         "status":"succes ingelogd",
         "data":{
             "user":result,
-            "message":result
+            "token":token
         } 
 
     })
