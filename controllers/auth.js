@@ -1,7 +1,7 @@
 //user model laden (registreren en inloggen) 
 const User = require('../models/User');
 // resuire de webtokens
-const jwt = require('jsonwebtokens');
+const jwt = require('jsonwebtoken');
 //ook het passport requiren
 //const passport=require('../passport/passport');
 
