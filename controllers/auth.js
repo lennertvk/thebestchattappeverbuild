@@ -1,5 +1,7 @@
 //user model laden (registreren en inloggen) 
 const User = require('../models/User');
+// resuire de webtokens
+const jwt = require('jsonwebtoken');
 //ook het passport requiren
 //const passport=require('../passport/passport');
 
@@ -15,8 +17,15 @@ const signup = async(req,res,next)=>{
     await user.setPassword(password);
     //saven via mongoose
    await user.save().then(result=>{
+       let token =jwt.sign({
+           uid:result._id,
+           username:result.username
+       }, "MyVerySecretWord");
         res.json({
-            "status":"succes"
+            "status":"succes",
+            "data":{
+                "token": token
+            }
         })
     }).catch(error=>{
         res.json({
@@ -28,21 +37,72 @@ module.exports.signup=signup;
 
 //methode login creeeren
 const login = async(req,res,next)=>{
-const user = await User.authenticate()(req.body.username,req.body.password).then (result => {
+const user = await User.authenticate()(req.body.username,req.body.password).then (result=> {
+//als er geen user is terug gekomen
+    if (!result.user){
+        return res.json({
+            "status":"Failed",
+            "message":"Failed to login"
+    })
+}
+    let token =jwt.sign({
+        uid:result.user._id,
+        username:result.user.username
+    }, "MyVerySecretWord");
+
     res.json({
-        "status":"succes ingelogd",
+        "status":"Succes",
         "data":{
             "user":result,
-            "message":result
+            "token":token
         } 
 
     })
 }).catch(error=>{
     res.json({
-        "status":"error, inloggen lukt niet"
+        "status":"error, failed to login"
     })
 });
 };
 
 
 module.exports.login=login;
+
+
+
+//methode profile update creeeren
+
+const update = async(req,res,next)=>{
+//komt uit frontend
+let username = req.body.username;
+//let password=req.body.newPassword;
+console.log(username);
+
+//console.log(newPassword);
+let user =  localStorage.getItem('token').username;
+console.log(user);
+  
+User.findOneAndUpdate({
+    // hier moeten we bepalen welke user we gaan vervangen, werkt ng niet zo goed :) 
+   username:username
+   
+}, {
+   username:username
+  
+}).then(result => {
+    res.json({
+        "status":"succes",
+        "data":{
+            "user":result
+        } 
+    })
+
+}).catch(err=>{
+    
+    res.json({
+        "status":"error, niet geupdate"
+    })
+})
+
+};
+module.exports.update=update;

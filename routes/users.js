@@ -11,5 +11,7 @@ router.get('/', function(req, res, next) {
 // sing up, als er naar /signup gesurft wordt, ga dan naar authController
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+router.put('/profile', authController.update);
+
 
 module.exports = router;
