@@ -10,6 +10,7 @@ var passport =require('./passport/passport');
 //routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var messagesRouter = require('./routes/api/v1/messages');
 // mag de grbuiker de messages zien of niet?
 //var messagesRouter = require('./api/v1/messages', passport.authenticate('jwt', { session: false }),apiMessagesRouter);
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/messages', messagesRouter);
 app.use (cors());
 
 // catch 404 and forward to error handler

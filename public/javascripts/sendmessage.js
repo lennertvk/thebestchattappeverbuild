@@ -21,7 +21,8 @@ class Clicknumber {
             if (data.action === "clicked") {
                 //that.enlarge();
                 that.loginput(data.input);
-                that.clearinput();;
+                that.clearinput();
+                //that.saveMessage();
             }
         });
         
@@ -49,6 +50,28 @@ class Clicknumber {
     clearinput(){
         document.getElementById('input').value = "";
     }
+
 }
 
 let p = new Clicknumber();
+
+document.getElementById('input').addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) {
+    let gebruikersnaam = "test gebruikersnaam";
+    let bericht = document.getElementById('input').value;
+    fetch ('http://localhost:3000/messages/save',{
+    method:"post",
+    headers: 
+        {'Content-Type':'application/json'},
+        body:JSON.stringify({
+            "username": gebruikersnaam,
+            "message": bericht 
+        })
+    }).then(response => {
+        return response.json();
+ 
+    });
+}
+
+});
