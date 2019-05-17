@@ -20,4 +20,9 @@ router.get('/login', function(req, res, next) {
 router.get('/profile', function(req, res, next) {
   res.render('profile', { title: 'profile' });
 });
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/login');
+});
 module.exports = router;

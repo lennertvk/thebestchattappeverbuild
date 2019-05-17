@@ -1,4 +1,4 @@
-let btnSignup = document.querySelector('.form--btn').addEventListener('click', click =>{
+let btnLogin = document.querySelector('.form--btn').addEventListener('click', click =>{
 
     let username= document.getElementById('email').value;
     let password=document.getElementById('password').value;
