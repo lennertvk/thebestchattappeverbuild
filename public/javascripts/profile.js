@@ -4,7 +4,6 @@ let btnSignup = document.querySelector('.form--btn--update').addEventListener('c
     //let newPassword=document.getElementById('newPassword').value;
     //let oldPassword=document.getElementById('oldPassword').value;
     //let skill=document.getElementById('skill').value;
-    
   
         fetch ('http://localhost:3000/users/profile',{
         

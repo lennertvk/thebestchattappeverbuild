@@ -42,7 +42,7 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
     if (!result.user){
         return res.json({
             "status":"Failed",
-            "message":"Failed to log in"
+            "message":"Failed to login"
     })
 }
     let token =jwt.sign({
@@ -51,7 +51,7 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
     }, "MyVerySecretWord");
 
     res.json({
-        "status":"succes ingelogd",
+        "status":"Succes",
         "data":{
             "user":result,
             "token":token
@@ -60,7 +60,7 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
     })
 }).catch(error=>{
     res.json({
-        "status":"error, inloggen lukt niet"
+        "status":"error, failed to login"
     })
 });
 };
@@ -72,17 +72,20 @@ module.exports.login=login;
 
 //methode profile update creeeren
 
-
 const update = async(req,res,next)=>{
 //komt uit frontend
 let username = req.body.username;
 //let password=req.body.newPassword;
 console.log(username);
-//console.log(newPassword);
 
+//console.log(newPassword);
+let user =  localStorage.getItem('token').username;
+console.log(user);
+  
 User.findOneAndUpdate({
     // hier moeten we bepalen welke user we gaan vervangen, werkt ng niet zo goed :) 
-   username:"elkekie@hotmail.com"
+   username:username
+   
 }, {
    username:username
   
