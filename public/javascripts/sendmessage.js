@@ -42,9 +42,28 @@ class Clicknumber {
     } //end constructor
 
     loginput(input){
-        console.log(input);
-        let placetexthere = document.getElementById('displaymessages');
-        placetexthere.innerHTML  += input + "<br>";
+        
+    fetch ('http://localhost:3000/messages/getusers')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(myJson){
+            let idthisuser = myJson.emailadres;
+            console.log('id this user = ' + idthisuser);
+            
+            for(let i = 0; i < myJson.data.length; i++){
+               // console.log(myJson.data[i]);
+                if(myJson.data[i]._id == idthisuser){
+                    let usernamethisuser = myJson.data[i].username;
+                    console.log(usernamethisuser);
+                    let placetexthere = document.getElementById('displaymessages');
+                    placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
+                }
+            }
+            
+        });
+        
+        
     }
 
     clearinput(){
@@ -94,7 +113,7 @@ window.onload= function(){
         })
         .then(function(myJson){
             let idthisuser = myJson.emailadres;
-
+           // console.log('id this user = ' + idthisuser);
             for(let i = 0; i < myJson.data.length; i++){
                 let keyArray = myJson.data[i]._id;
                 let valueArray = myJson.data[i].username;
