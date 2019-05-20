@@ -41,3 +41,18 @@ const save = async(req,res,next)=>{
     });
 };
 module.exports.save=save;
+
+let get = ('/messages',(req,res,next)=>{
+
+    message.find({},(err, docs)=>{
+    res.json({
+      "status": "yessssssssss 😄",
+      "data": {
+        "messages": docs
+      }
+    })
+    });
+    
+    });
+
+module.exports.get=get;

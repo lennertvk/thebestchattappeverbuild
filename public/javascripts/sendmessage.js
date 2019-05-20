@@ -81,3 +81,7 @@ document.getElementById('input').addEventListener('keypress', function (e) {
 }
 
 });
+
+window.onload= function(){
+
+};
