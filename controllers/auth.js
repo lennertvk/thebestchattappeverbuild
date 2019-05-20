@@ -74,8 +74,9 @@ const update = async(req,res,next)=>{
     let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
 //komt uit frontend
 let username=req.body.username;
-
 let skill =req.body.skill
+console.log(skill);
+console.log(username);
 
 if (username==""){
     User.findOneAndUpdate({
@@ -117,7 +118,7 @@ if (username==""){
              })
          })
     
-}else {
+}else   {
     User.findOneAndUpdate({
         _id:token 
      }, {
@@ -138,8 +139,6 @@ if (username==""){
              "status":"error, niet geupdate"
          })
      })
-
-
 }
 }
 

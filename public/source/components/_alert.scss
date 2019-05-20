@@ -1,7 +1,8 @@
 .alert
 {
-  background-color: $neutral;
+  background-color:$primary;
   padding: 0.5em;
   margin-bottom: 1em;
-  color: $primary;
+  color: $white;
+  font-weight: 600;
 }

@@ -4,6 +4,11 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
     let token = localStorage.getItem('token');
     let skill =  document.getElementById('skill').value;
   
+    if (username == "" && skill ==""){
+        let feedback= document.querySelector('.alert');
+        feedback.textContent="Fill in the form";
+        feedback.classList.remove('hidden');
+    }else {
         fetch ('http://localhost:3000/users/profile',{
         
             method:"put",
@@ -30,7 +35,8 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
                     feedback.textContent="Update failed";
                     feedback.classList.remove('hidden');
                 }
-            });
+        });
+}
 });
 
 
