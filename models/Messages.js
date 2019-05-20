@@ -9,4 +9,4 @@ const Save = new Schema({
     token : String
 });
 
-module.exports = mongoose.model('Save', Save);
+module.exports = mongoose.model('messages', Save);

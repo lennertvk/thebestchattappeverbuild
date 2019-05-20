@@ -83,5 +83,56 @@ document.getElementById('input').addEventListener('keypress', function (e) {
 });
 
 window.onload= function(){
+    console.log('het document is geladen'); 
+    const userNameArray = [];
+    
 
+    //console.log(userNameArray);
+    fetch ('http://localhost:3000/messages/getusers')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(myJson){
+            var testarray = {test: "this is a test value", age:"his age is 46"};
+            //console.log(testarray.age);
+
+            for(let i = 0; i < myJson.data.length; i++){
+                let keyArray = myJson.data[i]._id;
+                let valueArray = myJson.data[i].username;
+
+                userNameArray.push({
+                    userid: keyArray,
+                    username: valueArray
+                })
+            }
+            console.log("einde for loop");
+           // console.log(userNameArray);
+
+        });
+            
+
+
+    fetch ('http://localhost:3000/messages/get')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(myJson){
+            
+            let messagesArray = myJson.data;
+            console.log(userNameArray[0].userid);
+
+            for(let i = 0; i < messagesArray.length; i++){
+                let html = "";
+                for(let x=0; x < userNameArray['length']; x ++){
+                    if(userNameArray[x].userid == messagesArray[i].username){
+                        let nameofuser = userNameArray[x].username
+                        console.log(userNameArray[x]);
+                        html += "<p>"+nameofuser+ " : "+messagesArray[i].message+"</p>";
+
+                        document.getElementById("displaymessages").innerHTML += html;
+                    }
+                }
+                
+            }
+        });
 };
