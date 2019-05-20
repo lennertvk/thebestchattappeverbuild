@@ -1,9 +1,7 @@
-let btnSignup = document.querySelector('.form--btn--update').addEventListener('click', click =>{
+let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListener('click', click =>{
    
     let username= document.getElementById('email').value;
-    //let newPassword=document.getElementById('newPassword').value;
-    //let oldPassword=document.getElementById('oldPassword').value;
-    //let skill=document.getElementById('skill').value;
+    let token = localStorage.getItem('token');
   
         fetch ('http://localhost:3000/users/profile',{
         
@@ -14,7 +12,7 @@ let btnSignup = document.querySelector('.form--btn--update').addEventListener('c
                 },
                 body:JSON.stringify({
                     "username":username,
-                   // "password":newPassword
+                    "token": token
                 })
             }).then(response => {
                 return response.json();
@@ -31,5 +29,5 @@ let btnSignup = document.querySelector('.form--btn--update').addEventListener('c
                     feedback.classList.remove('hidden');
                 }
             });
-
 });
+

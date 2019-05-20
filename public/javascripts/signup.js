@@ -21,7 +21,6 @@ let btnSignup = document.querySelector('.form--btn').addEventListener('click', c
                 let feedback= document.querySelector('.alert');
                 feedback.textContent="sign up complete";
                 feedback.classList.remove('hidden');
-
                 //token aanmaken
                 let token=json.data.token;
                 //opslagen in local storage

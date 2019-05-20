@@ -19,7 +19,6 @@ const signup = async(req,res,next)=>{
    await user.save().then(result=>{
        let token =jwt.sign({
            uid:result._id,
-           username:result.username
        }, "MyVerySecretWord");
         res.json({
             "status":"succes",
@@ -39,6 +38,7 @@ module.exports.signup=signup;
 const login = async(req,res,next)=>{
 const user = await User.authenticate()(req.body.username,req.body.password).then (result=> {
 //als er geen user is terug gekomen
+
     if (!result.user){
         return res.json({
             "status":"Failed",
@@ -47,16 +47,15 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
 }
     let token =jwt.sign({
         uid:result.user._id,
-        username:result.user.username
     }, "MyVerySecretWord");
-
+    console.log(token);
+    
     res.json({
         "status":"Succes",
         "data":{
             "user":result,
             "token":token
         } 
-
     })
 }).catch(error=>{
     res.json({
@@ -69,34 +68,28 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
 module.exports.login=login;
 
 
-
-//methode profile update creeeren
+//methode profile update email creeeren
 
 const update = async(req,res,next)=>{
+
 //komt uit frontend
 let username = req.body.username;
-//let password=req.body.newPassword;
 console.log(username);
+let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
+console.log(token);
 
-//console.log(newPassword);
-let user =  localStorage.getItem('token').username;
-console.log(user);
-  
 User.findOneAndUpdate({
-    // hier moeten we bepalen welke user we gaan vervangen, werkt ng niet zo goed :) 
-   username:username
-   
+   _id:token 
 }, {
    username:username
-  
 }).then(result => {
+
     res.json({
         "status":"succes",
         "data":{
             "user":result
         } 
     })
-
 }).catch(err=>{
     
     res.json({
