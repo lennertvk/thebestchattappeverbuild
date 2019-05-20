@@ -71,31 +71,78 @@ module.exports.login=login;
 //methode profile update email creeeren
 
 const update = async(req,res,next)=>{
-
+    let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
 //komt uit frontend
-let username = req.body.username;
-console.log(username);
-let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
-console.log(token);
+let username=req.body.username;
 
-User.findOneAndUpdate({
-   _id:token 
-}, {
-   username:username
-}).then(result => {
+let skill =req.body.skill
 
-    res.json({
-        "status":"succes",
-        "data":{
-            "user":result
-        } 
-    })
-}).catch(err=>{
+if (username==""){
+    User.findOneAndUpdate({
+        _id:token 
+     }, {
+          $push: { skills: skill }},
+     ).then(result => {
+     
+         res.json({
+             "status":"succes",
+             "data":{
+                 "user":result
+             } 
+         })
+     }).catch(err=>{
+         
+         res.json({
+             "status":"error, niet geupdate"
+         })
+     })
+     
+     }else if (skill==""){
+        User.findOneAndUpdate({
+            _id:token 
+         }, {
+             username: username,}
+         ).then(result => {
+         
+             res.json({
+                 "status":"succes",
+                 "data":{
+                     "user":result
+                 } 
+             })
+         }).catch(err=>{
+             
+             res.json({
+                 "status":"error, niet geupdate"
+             })
+         })
     
-    res.json({
-        "status":"error, niet geupdate"
-    })
-})
+}else {
+    User.findOneAndUpdate({
+        _id:token 
+     }, {
+         username: username,
+         $push: { skills: skill }},
+    
+     ).then(result => {
+     
+         res.json({
+             "status":"succes",
+             "data":{
+                 "user":result
+             } 
+         })
+     }).catch(err=>{
+         
+         res.json({
+             "status":"error, niet geupdate"
+         })
+     })
 
-};
+
+}
+}
+
+
 module.exports.update=update;
+

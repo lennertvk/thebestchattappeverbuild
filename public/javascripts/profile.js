@@ -2,6 +2,7 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
    
     let username= document.getElementById('email').value;
     let token = localStorage.getItem('token');
+    let skill =  document.getElementById('skill').value;
   
         fetch ('http://localhost:3000/users/profile',{
         
@@ -12,6 +13,7 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
                 },
                 body:JSON.stringify({
                     "username":username,
+                    "skill":skill,
                     "token": token
                 })
             }).then(response => {
@@ -30,4 +32,5 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
                 }
             });
 });
+
 
