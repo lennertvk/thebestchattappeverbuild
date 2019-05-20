@@ -11,19 +11,19 @@ let btnLogin = document.querySelector('.form--btn').addEventListener('click', cl
             body:JSON.stringify({
                 "username":username,
                 "password":password
-               
             })
         }).then(response => {
             return response.json();
-            console.log("succes");
+            
         }).then (json => {
-            if (json.status==="succes"){
+        
+            if (json.status==="Succes"){
                  //token aanmaken
                 let token=json.data.token;
                 //opslagen in local storage
                 localStorage.setItem("token",token);
                 // redirecten
-                window.location.href="index.ejs"
+                window.location.href="/"
             }else {
                 let feedback= document.querySelector('.alert');
                 feedback.textContent="Login failed";

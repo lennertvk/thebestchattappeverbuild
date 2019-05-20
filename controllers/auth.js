@@ -38,6 +38,7 @@ module.exports.signup=signup;
 const login = async(req,res,next)=>{
 const user = await User.authenticate()(req.body.username,req.body.password).then (result=> {
 //als er geen user is terug gekomen
+
     if (!result.user){
         return res.json({
             "status":"Failed",
@@ -46,8 +47,9 @@ const user = await User.authenticate()(req.body.username,req.body.password).then
 }
     let token =jwt.sign({
         uid:result.user._id,
-    
     }, "MyVerySecretWord");
+    console.log(token);
+    
     res.json({
         "status":"Succes",
         "data":{
