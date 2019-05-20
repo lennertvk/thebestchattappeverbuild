@@ -12,9 +12,11 @@ const save = async(req,res,next)=>{
     //let test = "fdkmjsqflksjd";
     //let username = req.body.username;
     let test = req.body.message;
+    let username = req.body.username;
+    let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
 
     //aanmaak van een user object
-    const save = new Save({message: test});
+    const save = new Save({message: test, username: token, token: token});
     //wachtwoord word geset (geencrypteerd)
     //await user.setPassword(password);
     //saven via mongoose
@@ -28,7 +30,8 @@ const save = async(req,res,next)=>{
             "status":"succes",
             "data":{
                 "token": token,
-                "message": "testmessage"
+                "message": "testmessage",
+                "username": token
             }
         })
     }).catch(error=>{

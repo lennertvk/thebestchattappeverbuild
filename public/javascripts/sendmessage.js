@@ -53,7 +53,12 @@ class Clicknumber {
 
 }
 
+
+
 let p = new Clicknumber();
+let token = localStorage.getItem('token');
+//console.log(token);
+
 
 document.getElementById('input').addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode;
@@ -65,8 +70,9 @@ document.getElementById('input').addEventListener('keypress', function (e) {
     headers: 
         {'Content-Type':'application/json'},
         body:JSON.stringify({
-            "username": gebruikersnaam,
-            "message": bericht 
+            "username": token,
+            "message": bericht,
+            "token" : token
         })
     }).then(response => {
         return response.json();
