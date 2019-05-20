@@ -1,4 +1,4 @@
-console.log("haloo");
+void 0;
 let btnUpdateEmail = document
   .querySelector('.form--btn--update')
   .addEventListener('click', click => {
@@ -28,7 +28,7 @@ let btnUpdateEmail = document
         })
         .then(json => {
           if (json.status === 'succes') {
-            console.log('succes');
+            void 0;
             let feedback = document.querySelector('.alert');
             feedback.textContent = 'Updated';
             feedback.classList.remove('hidden');

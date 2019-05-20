@@ -39,7 +39,7 @@ class Clicknumber {
   } //end constructor
 
   loginput(input) {
-    console.log(input);
+    void 0;
     let placetexthere = document.getElementById('displaymessages');
     placetexthere.innerHTML += input + '<br>';
   }

@@ -18,10 +18,8 @@ function sass2css(done){ //done is in de docs cb
     done();
 }
 
-watch("./public/source/**.scss", sass2css);
-
 const imagemin = require('gulp-imagemin');
-const gulp =require('gulp');
+
 
 function imagesMin(done){
     return src('./public/preImages/**')
@@ -42,12 +40,23 @@ function imagesMin(done){
        done();
 };
 
-watch("./public/source/**.scss", sass2css);
-watch("./public/images/", imagesMin);
+const gulp = require('gulp');
+const stripDebug = require('gulp-strip-debug');
+ 
+function debug(done){
+    return src('./public/javascripts/**.js')
+        .pipe(stripDebug())
+        .pipe(gulp.dest('./public/dist/javascripts/'))
+        .pipe(browserSync.stream())
+        done()
+  
+};
 
 
-module.exports.default = parallel(sass2css);
-module.exports.imagesMin = parallel(imagesMin);
+//watch("./public/images/",imagesMin);
+//watch("./public/source/**.scss", sass2css);
 
 
-
+//module.exports.default = parallel(sass2css);
+//module.exports.default = parallel(imagesMin);
+module.exports.default = parallel(debug);
