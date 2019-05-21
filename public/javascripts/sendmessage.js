@@ -118,7 +118,7 @@ window.onload= function(){
                 let keyArray = myJson.data[i]._id;
                 let valueArray = myJson.data[i].username;
                 if(idthisuser === myJson.data[i]._id){
-                    let thisuseremail = myJson.data[i].username;
+                    let thisuseremail = localStorage.getItem('email');
                     document.getElementById('loggedin').innerHTML = thisuseremail;
                     
                     
@@ -146,13 +146,13 @@ window.onload= function(){
         })
         .then(function(myJson){
             let messagesArray = myJson.data;
-            //console.log(userNameArray[0].userid);
+            console.log(userNameArray[0].userid);
 
             for(let i = 0; i < messagesArray.length; i++){
                 let html = "";
                 for(let x=0; x < userNameArray['length']; x ++){
                     if(userNameArray[x].userid == messagesArray[i].username){
-                        let nameofuser = userNameArray[x].username
+                        let nameofuser = localStorage.getItem('email');
                         //console.log(userNameArray[x]);
                         html += "<p>"+nameofuser+ " : "+messagesArray[i].message+"</p>";
 

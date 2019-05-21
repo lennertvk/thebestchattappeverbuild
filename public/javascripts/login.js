@@ -20,8 +20,12 @@ let btnLogin = document.querySelector('.form--btn').addEventListener('click', cl
             if (json.status==="Succes"){
                  //token aanmaken
                 let token=json.data.token;
+
+                let email = document.getElementById('email').value;
+
                 //opslagen in local storage
                 localStorage.setItem("token",token);
+                localStorage.setItem("email", email)
                 // redirecten
                 window.location.href="/"
             }else {
