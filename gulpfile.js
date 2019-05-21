@@ -5,11 +5,13 @@ const {
     parallel
 } = require('gulp');
 const sass = require('gulp-sass');
+const stripDebug = require('gulp-strip-debug');
+const imagemin = require('gulp-imagemin');
+const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 
 function sass2css(done){ //done is in de docs cb
     return src("./public/source/app.scss") //want alles van de sccs is hierin gelinkt
-
     //inpluggen dat sass naar css omzet
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(dest("./public/dist/css/"))
@@ -17,9 +19,6 @@ function sass2css(done){ //done is in de docs cb
 
     done();
 }
-
-const imagemin = require('gulp-imagemin');
-
 
 function imagesMin(done){
     return src('./public/preImages/**')
@@ -40,23 +39,27 @@ function imagesMin(done){
        done();
 };
 
-const gulp = require('gulp');
-const stripDebug = require('gulp-strip-debug');
- 
 function debug(done){
     return src('./public/javascripts/**.js')
         .pipe(stripDebug())
         .pipe(gulp.dest('./public/dist/javascripts/'))
         .pipe(browserSync.stream())
         done()
-  
 };
 
+watch("./public/images/",imagesMin);
+watch("./public/source/**.scss", sass2css);
 
-//watch("./public/images/",imagesMin);
-//watch("./public/source/**.scss", sass2css);
+// parallel aanspreken van de twee gulps dat moeten doorlopen
+//de debug functie doen we hier niet, enkel handmatig na coderen van goeie javascript
+var build = gulp.series(gulp.parallel(imagesMin, sass2css));
 
+//exporteren van de alle functies
+module.exports.imagesMin = imagesMin;
+module.exports.sass2css =  sass2css;
+module.exports.debug =  debug;
+module.exports.build = build;
 
-//module.exports.default = parallel(sass2css);
-//module.exports.default = parallel(imagesMin);
-module.exports.default = parallel(debug);
+//enkel de default laten runnen door commando gulp
+exports.default = build;
+
