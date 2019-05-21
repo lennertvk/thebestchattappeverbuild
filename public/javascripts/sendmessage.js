@@ -53,8 +53,8 @@ class Clicknumber {
             
             for(let i = 0; i < myJson.data.length; i++){
                // console.log(myJson.data[i]);
-                if(myJson.data[i]._id == idthisuser){
-                    let usernamethisuser = myJson.data[i].username;
+                if(myJson.data[i]._id === idthisuser){
+                    let usernamethisuser = localStorage.getItem('email');
                     console.log(usernamethisuser);
                     let placetexthere = document.getElementById('displaymessages');
                     placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
@@ -113,25 +113,20 @@ window.onload= function(){
         })
         .then(function(myJson){
             let idthisuser = myJson.emailadres;
-           // console.log('id this user = ' + idthisuser);
+            //console.log(myJson);
             for(let i = 0; i < myJson.data.length; i++){
                 let keyArray = myJson.data[i]._id;
                 let valueArray = myJson.data[i].username;
                 if(idthisuser === myJson.data[i]._id){
                     let thisuseremail = localStorage.getItem('email');
                     document.getElementById('loggedin').innerHTML = thisuseremail;
-                    
-                    
-                    
-                    //this is not showing the right email!!!
-
-
-
                 }
                 userNameArray.push({
                     userid: keyArray,
                     username: valueArray
                 })
+                
+                document.getElementById('allusers').innerHTML += "<p>" + myJson.data[i].username + "</p>"; 
             }
             console.log("einde for loop");
           //  console.log(userNameArray);
@@ -152,7 +147,7 @@ window.onload= function(){
                 let html = "";
                 for(let x=0; x < userNameArray['length']; x ++){
                     if(userNameArray[x].userid == messagesArray[i].username){
-                        let nameofuser = localStorage.getItem('email');
+                        let nameofuser = userNameArray[x].username;
                         //console.log(userNameArray[x]);
                         html += "<p>"+nameofuser+ " : "+messagesArray[i].message+"</p>";
 
@@ -162,4 +157,6 @@ window.onload= function(){
                 
             }
         });
+
+    
 };
