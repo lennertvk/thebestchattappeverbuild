@@ -119,9 +119,14 @@ window.onload= function(){
                 let valueArray = myJson.data[i].username;
                 if(idthisuser === myJson.data[i]._id){
                     let thisuseremail = myJson.data[i].username;
-                    userNameArray.unshift({
-                        emailthisuer: thisuseremail
-                    })
+                    document.getElementById('loggedin').innerHTML = thisuseremail;
+                    
+                    
+                    
+                    //this is not showing the right email!!!
+
+
+
                 }
                 userNameArray.push({
                     userid: keyArray,
