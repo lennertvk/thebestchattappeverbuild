@@ -25,6 +25,7 @@ let btnSignup = document.querySelector('.form--btn').addEventListener('click', c
                 let token=json.data.token;
                 //opslagen in local storage
                 localStorage.setItem("token",token);
+                localStorage.setItem("email", email)
                 // redirecten
                 window.location.href="/";
             }

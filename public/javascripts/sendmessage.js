@@ -84,6 +84,7 @@ document.getElementById('input').addEventListener('keypress', function (e) {
     if (key === 13) {
     let gebruikersnaam = "test gebruikersnaam";
     let bericht = document.getElementById('input').value;
+    let to = localStorage.getItem('messageto');
     fetch ('http://localhost:3000/messages/save',{
     method:"post",
     headers: 
@@ -91,7 +92,8 @@ document.getElementById('input').addEventListener('keypress', function (e) {
         body:JSON.stringify({
             "username": token,
             "message": bericht,
-            "token" : token
+            "token" : token,
+            "messageto": to
         })
     }).then(response => {
         return response.json();
@@ -126,9 +128,9 @@ window.onload= function(){
                     username: valueArray
                 })
                 
-                document.getElementById('allusers').innerHTML += "<p>" + myJson.data[i].username + "</p>"; 
+               // document.getElementById('allusers').innerHTML += "<p><button onclick='messagespecperson(this)'>" + myJson.data[i].username + "</button></p>"; 
             }
-            console.log("einde for loop");
+            //console.log("einde for loop");
           //  console.log(userNameArray);
 
         });
@@ -141,7 +143,7 @@ window.onload= function(){
         })
         .then(function(myJson){
             let messagesArray = myJson.data;
-            console.log(userNameArray[0].userid);
+            //console.log(userNameArray[0].userid);
 
             for(let i = 0; i < messagesArray.length; i++){
                 let html = "";
@@ -158,5 +160,71 @@ window.onload= function(){
             }
         });
 
-    
+       
 };
+
+let findById = ()=>{
+    let input = document.getElementById('inputgetbyid').value;
+    console.log(input);
+    fetch (`http://localhost:3000/messages/get/${input}`)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(myJson){
+        let message = myJson.data.docs[0].message;
+        return message;
+    })
+    .then(function(message){
+        document.getElementById('showbyid').innerHTML = "Message: " + message;
+    });
+    document.getElementById('inputgetbyid').value = "";
+}
+
+/*
+let messagespecperson = (button) => {
+    let usernamee = button.innerHTML;
+    localStorage.setItem('messageto', usernamee);
+    let displaythemessages = document.getElementById('displaymessages');
+    displaythemessages.innerHTML = "";
+    let myUsername = localStorage.getItem('email');
+    //console.log(username);
+    fetch ('http://localhost:3000/messages/get')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(myJsonMessages){
+        //console.log(myJsonMessages.data);
+        fetch ('http://localhost:3000/messages/getusers')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(myJsonUsers){
+            console.log(myJsonUsers.data);
+            for(let i = 0; i < myJsonUsers.data.length; i++){
+                //console.log(myJsonUsers.data[i].username);
+                if(myJsonUsers.data[i].username === myUsername){
+                    let iduser = myJsonUsers.data[i]._id;
+
+                    //console.log(iduser);
+                    console.log(myJsonMessages.data);
+                    
+                    for(let e = 0; e < myJsonMessages.data.length; e++){
+                        // hierna maak je de chat leeg en geef je alle messages weer
+                        // die die jij ooit naar die persoon gestuurd hebt door
+                        // bij messages bij het veld to(id) te kijken
+                        //en je geeft alle messages weer die van, naar zijn van
+                        // de geklikte zijn standpunt
+                         if(myJsonMessages.data[e].messageto == usernamee && myJsonMessages.data[e].username == iduser){
+                        displaythemessages.innerHTML += "<p>"+ myUsername + " : " +myJsonMessages.data[e].message +"</p>";
+                        }
+                
+                    }
+                    
+                
+                }
+                
+            }
+        });
+    });
+}
+*/
