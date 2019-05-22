@@ -150,9 +150,15 @@ window.onload= function(){
                 for(let x=0; x < userNameArray['length']; x ++){
                     if(userNameArray[x].userid == messagesArray[i].username){
                         let nameofuser = userNameArray[x].username;
-                        //console.log(userNameArray[x]);
-                        html += "<p>"+nameofuser+ " : "+messagesArray[i].message+"</p>";
-
+                        //console.log(messagesArray[i]);
+                       
+                        html += "<p>"+nameofuser+ " : "+messagesArray[i].message;
+                        html += "<button id ='"+messagesArray[i]._id+"' onclick='deletethismessage(this)'>DEL</button>";
+                        html += "<br>";
+                        html += "<input type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
+                        html += "<button id ='"+messagesArray[i]._id+"' onclick='updatethismessage(this)'>UPD</button>";
+                        html += "</p>";                        
+                        
                         document.getElementById("displaymessages").innerHTML += html;
                     }
                 }
@@ -178,6 +184,43 @@ let findById = ()=>{
         document.getElementById('showbyid').innerHTML = "Message: " + message;
     });
     document.getElementById('inputgetbyid').value = "";
+}
+
+let deletethismessage = (button) => {
+    let input = button.id;
+    console.log(input);
+    
+    fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
+    .then(function(response){
+        console.log(response);
+        return response.json();
+    })
+    .then(function(myJson){
+        console.log(myJson);
+    });
+    
+}
+
+let updatethismessage = (button) => { //update zoals post doen met headers,... doc input get by id voor waar ze de message in willen veranderen
+    let input = button.id;
+    console.log(input);
+    let updatemessa = document.getElementById('updateinput' + input).value;
+    console.log(updatemessa);
+    fetch (`http://localhost:3000/messages/update/${input}`,{
+        method:"put",
+        headers: 
+            {'Content-Type':'application/json'},
+            body:JSON.stringify({
+                "updatedmessage": updatemessa
+            })
+        })
+        .then(function(response){
+        //console.log(response);
+        return response.json();
+    })
+    .then(function(myJson){
+        console.log(myJson);
+    });
 }
 
 /*

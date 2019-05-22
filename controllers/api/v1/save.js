@@ -9,7 +9,6 @@ const save = async(req,res,next)=>{
     let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
     let messageto = req.body.messageto;
     const save = new Save({message: test, username: token, token: token, messageto: messageto});
-
    await save.save().then(result=>{
        let token =jwt.sign({
            uid:result._id,
@@ -86,8 +85,9 @@ module.exports.deletebyid = deletebyid;
 
 
 const updatebyid = function (req, res) {
+    let updatemessage = req.body.updatedmessage;
     var id = req.params.id;
-    Save.updateOne( { _id: id }, {$set: { message: "this is an update" }}, (err, docs) =>{
+    Save.updateOne( { _id: id }, {$set: { message: updatemessage}}, (err, docs) =>{
         if(!err){
             res.json({
                 "status"    : "succes",
