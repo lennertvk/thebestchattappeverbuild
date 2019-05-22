@@ -15,8 +15,13 @@
             <li><a href="logout" id="logout">Logout</a></li>
         </ul>
     </nav>
-    
-<h1>what is your message?</h1>
+
+    <div class="allusers" id="allusers">
+
+    </div>
+    <br>
+    <br>
+  <h1>what is your message?</h1>
 <h3>logged in: <span id="loggedin"></span></h3>
 <br>
 <br>
@@ -32,10 +37,20 @@
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<h5>if you know the id of your message you an find it here</h5>
+<span id="showbyid"></span>
+<br>
+<input type="text" id="inputgetbyid">
+<button onclick="findById()">Find</button>
 
   <script src="dist/javascripts/primus.js"></script>
   <script src="dist/javascripts/logout.js"></script>
   <script src="dist/javascripts/sendmessage.js"></script>
+  <script src="dist/javascripts/deletemessage.js"></script>
+  <script src="dist/javascripts/updatemessage.js"></script>
 
 
 </body>

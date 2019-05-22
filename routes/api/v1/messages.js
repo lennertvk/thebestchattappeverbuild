@@ -7,9 +7,16 @@ const getAllUserscontroller = require('../../../controllers/api/v1/allusers');
 
 
 router.get('/get', saveController.getAll);
+
+router.get('/get/:id', saveController.getOne);
+
 router.get('/getusers', getAllUserscontroller.getAllUsers);
 
 router.post('/save', saveController.save);
 
+router.delete('/delete/:id',  saveController.deletebyid); 
 
+router.put('/update/:id',  saveController.updatebyid); 
+    
+    
 module.exports = router; 

@@ -6,7 +6,8 @@ mongoose.set('useFindAndModify', false);
 const Save = new Schema({
     message: String,
     username: String,
-    token : String
+    token : String,
+    messageto: String
 });
 
 module.exports = mongoose.model('messages', Save);
