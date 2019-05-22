@@ -4,8 +4,6 @@ class Clicknumber {
         let that = this;
         this.btn1 = document.querySelector("#btn1");
         this.inputfield = document.getElementById('input');
-        //this.inputfieldinput = document.getElementById('input').value;
-        //this.deletebutton = document.getElementById('updateinput5ce46bcdffb5a8237c112300');
 
         // primus web sockets
         this.primus = Primus.connect("/", {
@@ -57,6 +55,9 @@ class Clicknumber {
             
             for(let i = 0; i < myJson.data.length; i++){
                // console.log(myJson.data[i]);
+               console.log(myJson.data);
+               console.log(idthisuser);
+               console.log("volgende set");
                 if(myJson.data[i]._id === idthisuser){
                     let usernamethisuser = localStorage.getItem('email');
                     console.log(usernamethisuser);
