@@ -17,7 +17,11 @@ var messagesRouter = require('./routes/api/v1/messages');
 
 var mongoose = require('mongoose');
 mongoose.set('useCreateIndex',true);
-mongoose.connect('mongodb://localhost:27017/Bestchatever', {useNewUrlParser: true});
+try {
+  mongoose.connect('mongodb+srv://chatapp:WalHy1jQayvq4ZRD@cluster0-t1v4z.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
+} catch (error) {
+  console.log(error);
+}
 
 var app = express();
 
