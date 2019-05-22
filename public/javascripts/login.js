@@ -4,8 +4,6 @@ let btnLogin = document
     let username = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    let username= document.getElementById('email').value;
-    let password=document.getElementById('password').value;
     
     fetch ('http://localhost:3000/users/login',{
         
