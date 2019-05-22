@@ -5,6 +5,7 @@ class Clicknumber {
         this.btn1 = document.querySelector("#btn1");
         this.inputfield = document.getElementById('input');
         //this.inputfieldinput = document.getElementById('input').value;
+        //this.deletebutton = document.getElementById('updateinput5ce46bcdffb5a8237c112300');
 
         // primus web sockets
         this.primus = Primus.connect("/", {
@@ -38,6 +39,9 @@ class Clicknumber {
                         e.preventDefault();
                     }
                 });
+        
+            // click on update button
+                //this.
                 
     } //end constructor
 
@@ -60,21 +64,41 @@ class Clicknumber {
                     placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
                 }
             }
-            
         });
-        
-        
     }
 
     clearinput(){
         document.getElementById('input').value = "";
     }
 
+    testfunction(){
+        console.log("the test function is being logged");
+    }
+
 }
 
 
-
 let p = new Clicknumber();
+/*
+let deletethismessage = (button) => {
+    let input = button.id;
+    console.log(input);
+    
+    fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
+    .then(function(response){
+        console.log(response);
+        return response.json();
+    })
+    .then(function(myJson){
+        primus.write({
+            "action": "delete",
+            "input" : myJson
+        });
+        console.log(myJson);
+    });
+    
+}
+*/
 let token = localStorage.getItem('token');
 //console.log(token);
 
@@ -106,7 +130,6 @@ const userNameArray = [];
 //console.log(userNameArray[0]);
 window.onload= function(){
     console.log('het document is geladen'); 
-    
 
     //console.log(userNameArray);
     fetch ('http://localhost:3000/messages/getusers')
@@ -151,14 +174,16 @@ window.onload= function(){
                     if(userNameArray[x].userid == messagesArray[i].username){
                         let nameofuser = userNameArray[x].username;
                         //console.log(messagesArray[i]);
-                       
-                        html += "<p>"+nameofuser+ " : "+messagesArray[i].message;
-                        html += "<button id ='"+messagesArray[i]._id+"' onclick='deletethismessage(this)'>DEL</button>";
+                        html += "<div class='messagewrapper'>";
+                        html += "<p id='pid"+messagesArray[i]._id+"'>"+nameofuser+ " : <span id='spanmessage"+messagesArray[i]._id+"'>"+messagesArray[i].message + "</span>";
+                        html += "<button id ='"+messagesArray[i]._id+"' onclick='deletethismessage(this)' class='updbutton'>DEL</button>";
+                        html += "<button id ='"+messagesArray[i]._id+"' onclick='showUpdate(this)' class='showupdatebtn show"+messagesArray[i]._id+"'>UPD</button>";
+                        html += "</div>";
                         html += "<br>";
-                        html += "<input type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
-                        html += "<button id ='"+messagesArray[i]._id+"' onclick='updatethismessage(this)'>UPD</button>";
+                        html += "<input class='hide' type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
+                        html += "<button class='btnforupdate hide "+messagesArray[i]._id+"' id ='"+messagesArray[i]._id+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
                         html += "</p>";                        
-                        
+
                         document.getElementById("displaymessages").innerHTML += html;
                     }
                 }
@@ -166,8 +191,37 @@ window.onload= function(){
             }
         });
 
-       
 };
+
+let showUpdate = (button) =>{
+    let id = button.id;
+    //console.log(this.button);
+    document.getElementById('updateinput' + id).classList.remove("hide");
+    document.getElementById('updateinput' + id).classList.add("show");  
+
+    //button voor het uploaden nog tonen!!!!!!!!
+    let btnupd = document.getElementsByClassName(""+id+"")[0];
+    btnupd.classList.remove("hide");
+    btnupd.classList.add("show");
+
+    button.classList.add("hide");
+}
+
+let hidebtns = (button) =>{
+    let id = button.id;
+
+    //console.log(this.button);
+    document.getElementById('updateinput' + id).classList.remove("show");
+    document.getElementById('updateinput' + id).classList.add("hide");  
+    
+    let btnupd = document.getElementsByClassName(""+id+"")[0];
+    btnupd.classList.remove("show");
+    btnupd.classList.add("hide");
+
+    document.getElementsByClassName(`show${id}`)[0].classList.remove("hide");
+    document.getElementsByClassName(`show${id}`)[0].classList.add("show");
+
+}
 
 let findById = ()=>{
     let input = document.getElementById('inputgetbyid').value;
@@ -186,21 +240,8 @@ let findById = ()=>{
     document.getElementById('inputgetbyid').value = "";
 }
 
-let deletethismessage = (button) => {
-    let input = button.id;
-    console.log(input);
-    
-    fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
-    .then(function(response){
-        console.log(response);
-        return response.json();
-    })
-    .then(function(myJson){
-        console.log(myJson);
-    });
-    
-}
 
+/*
 let updatethismessage = (button) => { //update zoals post doen met headers,... doc input get by id voor waar ze de message in willen veranderen
     let input = button.id;
     console.log(input);
@@ -221,7 +262,12 @@ let updatethismessage = (button) => { //update zoals post doen met headers,... d
     .then(function(myJson){
         console.log(myJson);
     });
+
+
 }
+*/
+
+
 
 /*
 let messagespecperson = (button) => {
