@@ -76,8 +76,8 @@ let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
 //komt uit frontend
 let username=req.body.username;
 let skill =req.body.skill
-console.log(skill);
-console.log(username);
+//console.log(skill);
+//console.log(token);
 
 if (username==""){
     User.findOneAndUpdate({
@@ -146,21 +146,19 @@ if (username==""){
 
 module.exports.update=update;
 
-//let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
-
 const getAllSkills= (req, res) => {
-    //let token = localStorage.getItem('token');
-    //let id = jwt.verify(token,"MyVerySecretWord").uid;
-    let id=  jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1Y2U1YjE0NjJjMDYzNDZkYTM3YmFkODIiLCJpYXQiOjE1NTg2MDMwNjB9.n7is7OoVet0V07mtnsxtJDACwmsjrjyJvI7ZDgACApw","MyVerySecretWord").uid;
-console.log (id)
+    let id=  jwt.verify(req.params.id,"MyVerySecretWord").uid;
+  
     User.find({
         _id: id}, (err, docs) =>{
+ 
         if(!err){
             res.json({
                 "status" : "succes",
-                "data"   : docs, 
+                "data"   : docs
             })
         }
+     
     });
 
 }

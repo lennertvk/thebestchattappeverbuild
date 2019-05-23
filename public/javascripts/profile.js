@@ -1,7 +1,7 @@
 let token = localStorage.getItem('token');
 
 let btnUpdateEmail = document
-  .querySelector('btn--profile')
+  .querySelector('.btn--profile')
   .addEventListener('click', click => {
     let username = document.getElementById('email').value;
     let skill = document.getElementById('skill').value;
@@ -43,16 +43,18 @@ let btnUpdateEmail = document
 
 window.onload= function(){
     
-    fetch ("https://thebestchatappever.herokuapp.com/users/get")
+    fetch (`https://thebestchatappever.herokuapp.com/users/get/${token}`)
      
     .then(function(response){
-      console.log(response)
+      console.log(response);
       return response.json();
       
   })
   
   .then(function(myJson){
-    let skillsArray = myJson.data[0].skills;
+    //let skillsArray = myJson.data[0].skills;
+    console.log (myJson);
+  
     let html = "";
     for(let i = 0; i < skillsArray.length; i++){
 
