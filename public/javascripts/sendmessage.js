@@ -131,21 +131,22 @@ document.getElementById('input').addEventListener('keypress', function (e) {
         .then(function(myJson){
             let messagesArray = myJson.data;
             let input = document.getElementById('input').value;
-            for(let i = 0; i < messagesArray.length; i++){
-                if(messagesArray[i].message == input){
-                    let messageid = messagesArray[i]._id;
-
-                    primus.write({
-                        "action": "clicked",
-                        "input" : input,
-                        "messageid" : messageid,
-                        "username" : messagesArray[i].messageto
-                    });
-                    document.getElementById('input').value = "";
-                    e.preventDefault();
-                }
-            }            
-            
+            if(input != ""){
+                for(let i = 0; i < messagesArray.length; i++){
+                    if(messagesArray[i].message == input){
+                        let messageid = messagesArray[i]._id;
+    
+                        primus.write({
+                            "action": "clicked",
+                            "input" : input,
+                            "messageid" : messageid,
+                            "username" : messagesArray[i].messageto
+                        });
+                        document.getElementById('input').value = "";
+                        e.preventDefault();
+                    }
+                } 
+            }         
         });
         
 
