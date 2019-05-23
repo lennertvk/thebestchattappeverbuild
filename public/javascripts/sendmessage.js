@@ -154,6 +154,9 @@ window.onload= function(){
                     username: valueArray
                 })
                 
+                document.getElementById('here').innerHTML = myJson[0]._id;
+
+                
                // document.getElementById('allusers').innerHTML += "<p><button onclick='messagespecperson(this)'>" + myJson.data[i].username + "</button></p>"; 
             }
             //console.log("einde for loop");
