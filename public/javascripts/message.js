@@ -19,7 +19,7 @@ primus.on("data", function (data) {
 
         placetexthere.innerHTML  += html;
 
-        $(".messages").animate({ scrollTop: $(document).height() }, "slow");
+        $(".displaymessages").animate({ scrollTop: $(document).height() }, "slow");
     }
 });
 
