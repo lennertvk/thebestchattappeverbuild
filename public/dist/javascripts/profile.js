@@ -52,7 +52,7 @@ window.onload= function(){
   })
   
   .then(function(myJson){
-    //let skillsArray = myJson.data[0].skills;
+    let skillsArray = myJson.data[0].skills;
     void 0;
   
     let html = "";
