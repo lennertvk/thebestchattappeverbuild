@@ -9,11 +9,11 @@ var primus = Primus.connect("/", {
 });
 primus.on("data", function (data) {
     if(data.action == "clicked"){
-        void 0;
+        //console.log(data.input);
         let usernamethisuser = localStorage.getItem('email');
         void 0;
         let placetexthere = document.getElementById('displaymessages');
-        placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
+        placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ data.input + "</p>";
     }
 });
 
@@ -25,6 +25,7 @@ document.getElementById('input').addEventListener('keypress', function (e) {
             "action": "clicked",
             "input" : input
         });
+        document.getElementById('input').value = "";
         e.preventDefault();
     }
 });
