@@ -153,9 +153,12 @@ window.onload= function(){
                     userid: keyArray,
                     username: valueArray
                 })
-
-                document.getElementById('here').innerHTML = myJson.data[0]._id;
-
+/*
+                //Ben ik nu in de verkeerde functie aan het werkne?
+                if(myJson.data[i].username == localStorage.getItem('email')){
+                    localStorage.setItem('userid', myJson.data[i]) ;
+                }
+*/
                 
                // document.getElementById('allusers').innerHTML += "<p><button onclick='messagespecperson(this)'>" + myJson.data[i].username + "</button></p>"; 
             }
@@ -199,8 +202,11 @@ window.onload= function(){
                 
             }
         });
+        let token = localStorage.getItem('token');
+        let emailvantoken =  jwt.verify(token,"MyVerySecretWord").uid;
 
         document.getElementById('loggedin').innerHTML = localStorage.getItem('email');
+        document.getElementById('here').innerHTML = emailvantoken;
     };
 
 let showUpdate = (button) =>{
