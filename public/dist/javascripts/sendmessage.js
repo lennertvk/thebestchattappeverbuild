@@ -111,7 +111,7 @@ document.getElementById('input').addEventListener('keypress', function (e) {
     if (key === 13) {
     let gebruikersnaam = "test gebruikersnaam";
     let bericht = document.getElementById('input').value;
-    let to = localStorage.getItem('messageto');
+    let to = localStorage.getItem('email');
     fetch ('https://thebestchatappever.herokuapp.com/messages/save',{
     method:"post",
     headers: 
@@ -138,7 +138,8 @@ document.getElementById('input').addEventListener('keypress', function (e) {
                     primus.write({
                         "action": "clicked",
                         "input" : input,
-                        "messageid" : messageid
+                        "messageid" : messageid,
+                        "username" : messagesArray[i].messageto
                     });
                     document.getElementById('input').value = "";
                     e.preventDefault();
