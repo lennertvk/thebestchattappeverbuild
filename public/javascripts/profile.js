@@ -1,7 +1,7 @@
 let token = localStorage.getItem('token');
 
 let btnUpdateEmail = document
-  .querySelector('.btn--update')
+  .querySelector('btn--profile')
   .addEventListener('click', click => {
     let username = document.getElementById('email').value;
     let skill = document.getElementById('skill').value;

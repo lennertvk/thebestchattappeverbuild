@@ -153,7 +153,8 @@ const getAllSkills= (req, res) => {
     //let id = jwt.verify(token,"MyVerySecretWord").uid;
     let id=  jwt.verify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1Y2U1YjE0NjJjMDYzNDZkYTM3YmFkODIiLCJpYXQiOjE1NTg2MDMwNjB9.n7is7OoVet0V07mtnsxtJDACwmsjrjyJvI7ZDgACApw","MyVerySecretWord").uid;
 console.log (id)
-    User.find({_id: id}, (err, docs) =>{
+    User.find({
+        _id: id}, (err, docs) =>{
         if(!err){
             res.json({
                 "status" : "succes",
