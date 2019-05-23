@@ -4,7 +4,7 @@ let btnSignup = document
     let username = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
-    fetch('http://localhost:3000/users/signup', {
+    fetch('https://thebestchatappever.herokuapp.com/users/signup', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

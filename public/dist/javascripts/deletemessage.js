@@ -19,7 +19,7 @@ let deletethismessage = (button) => {
     let input = button.id;
     console.log(input);
     
-    fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
+    fetch (`https://thebestchatappever.herokuapp.com/messages/delete/${input}`,{method:"delete"})
     .then(function(response){
         console.log(response);
         return response.json();

@@ -11,7 +11,7 @@ let btnUpdateEmail = document
       feedback.textContent = 'Fill in the form';
       feedback.classList.remove('hidden');
     } else {
-      fetch('http://localhost:3000/users/profile', {
+      fetch('https://thebestchatappever.herokuapp.com/users/profile', {
         method: 'put',
         headers: {
           'Content-Type': 'application/json',
