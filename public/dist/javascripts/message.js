@@ -25,20 +25,24 @@ primus.on("data", function (data) {
         html += "<input class='input hide' type='text' id='updateinput"+ +data.messageid +"' value='"+ data.input +"'>";
         html += "<button class='btn btn--update hide "+data.messageid+"' id ='"+data.messageid+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
         html += "</p>"; 
-*/
-        html += "<div class='messagewrapper'>";
-        html += "<p id='pid"+data.messageid+"'>"+data.username+ " : <span id='spanmessage"+data.messageid+"'>"+data.input + "</span>";
+*/  if(data.username != null){
+    html += "<div class='messagewrapper'>";
+    html += "<p id='pid"+data.messageid+"'>"+data.username+ " : <span id='spanmessage"+data.messageid+"'>"+data.input + "</span>";
+        if(data.username == usernamethisuser){
             html += "<button id ='"+data.messageid+"' onclick='deletethismessage(this)' class='btn btn--delete'>DEL</button>";
             html += "<button id ='"+data.messageid+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+data.messageid+"'>UPD</button>";
-        html += "</div>";
-        html += "<br>";
-        html += "<input class='input hide' type='text' id='updateinput"+ data.messageid +"' value='"+ data.input +"'>";
-        html += "<button class='btn btn--update hide "+data.messageid+"' id ='"+data.messageid+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
-        html += "</p>";  
+        }
+    html += "</div>";
+    html += "<br>";
+    html += "<input class='input hide' type='text' id='updateinput"+ data.messageid +"' value='"+ data.input +"'>";
+    html += "<button class='btn btn--update hide "+data.messageid+"' id ='"+data.messageid+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
+    html += "</p>";  
 
 
-        document.getElementById("displaymessages").innerHTML += html;
-        $(".displaymessages").stop().animate({ scrollTop: $(".displaymessages")[0].scrollHeight}, 1000);
+    document.getElementById("displaymessages").innerHTML += html;
+    $(".displaymessages").stop().animate({ scrollTop: $(".displaymessages")[0].scrollHeight}, 1000);
+
+}
 
     }
 });

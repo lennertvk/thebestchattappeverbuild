@@ -26,7 +26,7 @@ let btnSignup = document
                 let token=json.data.token;
                 //opslagen in local storage
                 localStorage.setItem("token",token);
-                localStorage.setItem("email", email)
+                localStorage.setItem("email", username)
                 // redirecten
                 window.location.href="/";
             }
