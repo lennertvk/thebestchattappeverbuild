@@ -9,19 +9,19 @@ var primus = Primus.connect("/", {
 });
 primus.on("data", function (data) {
     if(data.action == "update"){
-        console.log('hieronder komt de code');
-        console.log(data.newmessage);
-        console.log(data.input.data.id);
+        void 0;
+        void 0;
+        void 0;
         document.getElementById('spanmessage' + data.input.data.id).innerHTML = data.newmessage;
     }
 });
 
 let updatethismessage = (button) => { //update zoals post doen met headers,... doc input get by id voor waar ze de message in willen veranderen
     let input = button.id;
-    console.log(input);
+    void 0;
     let updatemessa = document.getElementById('updateinput' + input).value;
-    console.log(updatemessa);
-    fetch (`http://localhost:3000/messages/update/${input}`,{
+    void 0;
+    fetch (`https://thebestchatappever.herokuapp.com/messages/update/${input}`,{
         method:"put",
         headers: 
             {'Content-Type':'application/json'},
@@ -40,7 +40,7 @@ let updatethismessage = (button) => { //update zoals post doen met headers,... d
             "buttonid": input,
             "newmessage": updatemessa
         });
-        console.log(myJson);
+        void 0;
     });
 
 

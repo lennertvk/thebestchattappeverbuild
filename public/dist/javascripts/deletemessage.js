@@ -9,19 +9,19 @@ var primus = Primus.connect("/", {
 });
 primus.on("data", function (data) {
     if(data.action == "delete"){
-        console.log("hieronder komt de data");
-        console.log(data.buttonid);
+        void 0;
+        void 0;
         document.getElementById('pid' + data.buttonid).innerHTML = "";
     }
 });
 
 let deletethismessage = (button) => {
     let input = button.id;
-    console.log(input);
+    void 0;
     
-    fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
+    fetch (`https://thebestchatappever.herokuapp.com/messages/delete/${input}`,{method:"delete"})
     .then(function(response){
-        console.log(response);
+        void 0;
         return response.json();
     })
     .then(function(myJson){
@@ -30,6 +30,6 @@ let deletethismessage = (button) => {
             "input" : myJson,
             "buttonid": button.id
         });
-        console.log(myJson);
+        void 0;
     });
 }

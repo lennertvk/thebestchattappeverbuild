@@ -45,7 +45,7 @@ class Clicknumber {
 
     loginput(input){
         
-    fetch ('http://localhost:3000/messages/getusers')
+    fetch ('https://thebestchatappever.herokuapp.com/messages/getusers')
         .then(function(response){
             return response.json();
         })
@@ -110,7 +110,7 @@ document.getElementById('input').addEventListener('keypress', function (e) {
     let gebruikersnaam = "test gebruikersnaam";
     let bericht = document.getElementById('input').value;
     let to = localStorage.getItem('messageto');
-    fetch ('http://localhost:3000/messages/save',{
+    fetch ('https://thebestchatappever.herokuapp.com/messages/save',{
     method:"post",
     headers: 
         {'Content-Type':'application/json'},
@@ -133,7 +133,7 @@ window.onload= function(){
     void 0; 
 
     //console.log(userNameArray);
-    fetch ('http://localhost:3000/messages/getusers')
+    fetch ('https://thebestchatappever.herokuapp.com/messages/getusers')
         .then(function(response){
             return response.json();
         })
@@ -161,7 +161,7 @@ window.onload= function(){
             
 
 
-    fetch ('http://localhost:3000/messages/get')
+    fetch ('https://thebestchatappever.herokuapp.com/messages/get')
         .then(function(response){
             return response.json();
         })
@@ -227,7 +227,7 @@ let hidebtns = (button) =>{
 let findById = ()=>{
     let input = document.getElementById('inputgetbyid').value;
     void 0;
-    fetch (`http://localhost:3000/messages/get/${input}`)
+    fetch (`https://thebestchatappever.herokuapp.com/messages/get/${input}`)
     .then(function(response){
         return response.json();
     })

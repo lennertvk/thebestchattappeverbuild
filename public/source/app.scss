@@ -26,7 +26,8 @@ html
   margin-top:10px;
 }
 
-.input--text
+
+.signup--input
 {
   font-size: 1em;
   width: 100%;
@@ -97,11 +98,33 @@ html
   width: 50%;
 }
 
-.profile--input{
+.input--text
+{
   width: 40%;
   padding: 4px;
   margin-top: 10px;
   border: 1px $neutral solid;
+}
+
+.display--skills li
+{
+ 
+  list-style: none;
+  padding: 5px;
+  background-color: $neutral;
+  color:$white;
+  text-align: center;
+  float:left;
+ 
+}
+.display--skills
+{
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% ;
+  justify-self: center;
+  grid-gap: 10px;
+  margin-left: 20px;
+  
 }
 
 
