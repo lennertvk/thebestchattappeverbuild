@@ -1,3 +1,8 @@
+localStorage.setItem("token", "token");
+localStorage.setItem("email", "email")
+// redirecten
+window.location.href="/"
+
 let btnLogin = document
   .querySelector('.form--btn')
   .addEventListener('click', click => {

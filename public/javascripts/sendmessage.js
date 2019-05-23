@@ -195,8 +195,7 @@ window.onload= function(){
         });
 
         document.getElementById('loggedin').innerHTML = localStorage.getItem('email');
-        $(".displaymessages").animate({ scrollTop: $(document).height() }, "slow");
-};
+    };
 
 let showUpdate = (button) =>{
     let id = button.id;

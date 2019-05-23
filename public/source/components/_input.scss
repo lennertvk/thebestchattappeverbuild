@@ -1,0 +1,19 @@
+.newmessage--input{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75vw;
+}
+
+.input{
+    border: none;
+    border-bottom: solid $black;
+}
+
+.input:hover, .input:focus{
+    border-bottom: solid $primary;
+}
+
+.findmessage--input{
+    margin-left: $centerleft;
+}

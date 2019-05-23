@@ -19,37 +19,39 @@
     <div class="allusers" id="allusers">
 
     </div>
-    <br>
-    <br>
-  <h1>what is your message?</h1>
-<h3>logged in: <span id="loggedin"></span></h3>
+
+  <h1 class="title title--primary">What is your message?</h1>
+<h3 class="title title--subtitle">Logged in: <span id="loggedin"></span></h3>
 <br>
 <br>
 <div class="displaymessages" id="displaymessages">
 </div>
 
 <br>
-<div class="messages">
-  <span id="oldmessages"></span>
+<div class="oldmessage">
+  <span id="oldmessages" class="oldmessage--display"></span>
 </div>
-<div class="inputmessage">
-  <input type="text" name="input" id="input">
+<div class="newmessage">
+  <input type="text" name="input" id="input" class="input newmessage--input" placeholder="Type here">
 </div>
 
 <br>
 <br>
 <br>
 <br>
-<h5>if you know the id of your message you an find it here</h5>
+<h3 class="title title--subtitle">If you know the id of your message you an find it here</h3>
 <span id="showbyid"></span>
 <br>
-<input type="text" id="inputgetbyid">
-<button onclick="findById()">Find</button>
+
+<input type="text" id="inputgetbyid" class="input findmessage--input">
+
+<button class="btn btn--find" onclick="findById()">Find</button>
+
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  
+
   <script src="dist/javascripts/primus.js"></script>
   <script src="dist/javascripts/logout.js"></script>
   <script src="dist/javascripts/sendmessage.js"></script>

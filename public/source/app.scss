@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'components/btn';
 @import 'components/alert';
-
+@import 'components/input';
 body {
   box-sizing: border-box;
   font-family: $font;
@@ -143,4 +143,37 @@ html
   height: 45vh;
   overflow-y: scroll;
   width: 75vw;
+}
+
+.title{
+  margin-left: $centerleft;
+}
+
+.title--primary{
+  font-size: 2em;
+}
+
+.title--subtitle{
+  font-size: 1em;
+}
+
+/*******Scrollbar*******/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
