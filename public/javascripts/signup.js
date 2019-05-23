@@ -3,9 +3,6 @@ let btnSignup = document
   .addEventListener('click', click => {
     let username = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-
-    let username= document.getElementById('email').value;
-    let password=document.getElementById('password').value;
     
     fetch ('https://thebestchatappever.herokuapp.com/users/signup',{
         
