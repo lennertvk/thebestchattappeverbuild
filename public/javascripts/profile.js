@@ -3,7 +3,7 @@ let btnUpdateEmail= document.querySelector('.form--btn--update').addEventListene
     let username= document.getElementById('email').value;
     let token = localStorage.getItem('token');
   
-        fetch ('http://localhost:3000/users/profile',{
+        fetch ('https://thebestchatappever.herokuapp.com/users/profile',{
         
             method:"put",
             headers: 
