@@ -13,7 +13,11 @@ primus.on("data", function (data) {
         let usernamethisuser = localStorage.getItem('email');
         void 0;
         let placetexthere = document.getElementById('displaymessages');
-        placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ data.input + "</p>";
+        let html = "";
+        html += "<p>" +usernamethisuser + " : "+ data.input + "</p>";
+
+
+        placetexthere.innerHTML  += html;
     }
 });
 

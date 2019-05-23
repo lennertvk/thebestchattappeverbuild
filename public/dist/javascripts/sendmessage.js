@@ -194,6 +194,8 @@ window.onload= function(){
             }
         });
 
+        document.getElementById('loggedin').innerHTML = localStorage.getItem('email');
+
 };
 
 let showUpdate = (button) =>{
