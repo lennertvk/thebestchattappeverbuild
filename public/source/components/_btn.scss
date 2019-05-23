@@ -16,3 +16,11 @@
   position: relative;
   top: 1px;
 }
+
+.btn--primary
+{
+  background-color: $primary;
+  color:$white;
+  width: 20%;
+  margin: 20px 0 0 0;
+}

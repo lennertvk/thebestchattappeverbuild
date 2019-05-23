@@ -145,3 +145,20 @@ if (username==""){
 
 module.exports.update=update;
 
+let token =  jwt.verify(req.body.token,"MyVerySecretWord").uid;
+
+const getAllSkills= (req, res) => {
+    AllSkills.find({}, (err, docs) =>{
+        if(!err){
+            res.json({
+                "status"    : "succes",
+                "data"      : docs,
+                "emailadres": emailvantoken
+            })
+        }
+    });
+
+    
+  }
+
+module.exports. getAllSkills =  getAllSkills;
