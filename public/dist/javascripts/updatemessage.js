@@ -9,18 +9,18 @@ var primus = Primus.connect("/", {
 });
 primus.on("data", function (data) {
     if(data.action == "update"){
-        void 0;
-        void 0;
-        void 0;
+        console.log('hieronder komt de code');
+        console.log(data.newmessage);
+        console.log(data.input.data.id);
         document.getElementById('spanmessage' + data.input.data.id).innerHTML = data.newmessage;
     }
 });
 
 let updatethismessage = (button) => { //update zoals post doen met headers,... doc input get by id voor waar ze de message in willen veranderen
     let input = button.id;
-    void 0;
+    console.log(input);
     let updatemessa = document.getElementById('updateinput' + input).value;
-    void 0;
+    console.log(updatemessa);
     fetch (`http://localhost:3000/messages/update/${input}`,{
         method:"put",
         headers: 
@@ -40,7 +40,7 @@ let updatethismessage = (button) => { //update zoals post doen met headers,... d
             "buttonid": input,
             "newmessage": updatemessa
         });
-        void 0;
+        console.log(myJson);
     });
 
 

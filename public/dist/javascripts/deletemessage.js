@@ -9,19 +9,19 @@ var primus = Primus.connect("/", {
 });
 primus.on("data", function (data) {
     if(data.action == "delete"){
-        void 0;
-        void 0;
+        console.log("hieronder komt de data");
+        console.log(data.buttonid);
         document.getElementById('pid' + data.buttonid).innerHTML = "";
     }
 });
 
 let deletethismessage = (button) => {
     let input = button.id;
-    void 0;
+    console.log(input);
     
     fetch (`http://localhost:3000/messages/delete/${input}`,{method:"delete"})
     .then(function(response){
-        void 0;
+        console.log(response);
         return response.json();
     })
     .then(function(myJson){
@@ -30,6 +30,6 @@ let deletethismessage = (button) => {
             "input" : myJson,
             "buttonid": button.id
         });
-        void 0;
+        console.log(myJson);
     });
 }
