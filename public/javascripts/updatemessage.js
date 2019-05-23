@@ -21,7 +21,7 @@ let updatethismessage = (button) => { //update zoals post doen met headers,... d
     console.log(input);
     let updatemessa = document.getElementById('updateinput' + input).value;
     console.log(updatemessa);
-    fetch (`http://localhost:3000/messages/update/${input}`,{
+    fetch (`https://thebestchatappever.herokuapp.com/messages/update/${input}`,{
         method:"put",
         headers: 
             {'Content-Type':'application/json'},
