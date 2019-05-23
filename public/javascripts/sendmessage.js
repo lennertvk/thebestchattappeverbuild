@@ -188,6 +188,9 @@ window.onload= function(){
                         html += "</p>";                        
 
                         document.getElementById("displaymessages").innerHTML += html;
+
+                        $(".displaymessages").stop().animate({ scrollTop: $(".displaymessages")[0].scrollHeight}, 1000);
+
                     }
                 }
                 
