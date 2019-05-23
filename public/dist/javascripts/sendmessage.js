@@ -1,3 +1,4 @@
+/*
 class Clicknumber {
     constructor() {
         // set up some basic selectors we'll use often
@@ -51,16 +52,16 @@ class Clicknumber {
         })
         .then(function(myJson){
             let idthisuser = myJson.emailadres;
-            void 0;
+            console.log('id this user = ' + idthisuser);
             
             for(let i = 0; i < myJson.data.length; i++){
                // console.log(myJson.data[i]);
-               void 0;
-               void 0;
-               void 0;
+               console.log(myJson.data);
+               console.log(idthisuser);
+               console.log("volgende set");
                 if(myJson.data[i]._id === idthisuser){
                     let usernamethisuser = localStorage.getItem('email');
-                    void 0;
+                    console.log(usernamethisuser);
                     let placetexthere = document.getElementById('displaymessages');
                     placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
                 }
@@ -73,13 +74,14 @@ class Clicknumber {
     }
 
     testfunction(){
-        void 0;
+        console.log("the test function is being logged");
     }
 
 }
 
 
 let p = new Clicknumber();
+*/
 /*
 let deletethismessage = (button) => {
     let input = button.id;

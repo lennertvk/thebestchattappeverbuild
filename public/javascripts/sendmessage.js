@@ -1,3 +1,4 @@
+/*
 class Clicknumber {
     constructor() {
         // set up some basic selectors we'll use often
@@ -80,6 +81,7 @@ class Clicknumber {
 
 
 let p = new Clicknumber();
+*/
 /*
 let deletethismessage = (button) => {
     let input = button.id;
