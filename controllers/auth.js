@@ -161,4 +161,4 @@ const getAllSkills= (req, res) => {
     
   }
 
-module.exports. getAllSkills =  getAllSkills;
+module.exports.getAllSkills = getAllSkills;
