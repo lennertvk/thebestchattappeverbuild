@@ -202,11 +202,10 @@ window.onload= function(){
                 
             }
         });
-        let token = localStorage.getItem('token');
-        let emailvantoken =  jwt.verify(token,"MyVerySecretWord").uid;
+        
 
         document.getElementById('loggedin').innerHTML = localStorage.getItem('email');
-        document.getElementById('here').innerHTML = emailvantoken;
+        //document.getElementById('here').innerHTML = emailvantoken;
     };
 
 let showUpdate = (button) =>{

@@ -34,11 +34,14 @@ module.exports.save = save;
 
 
 const getAll= (req, res) => {
+    let token = localStorage.getItem('token');
+    let emailvantoken =  jwt.verify(token,"MyVerySecretWord").uid;
     Save.find({}, (err, docs) =>{
         if(!err){
             res.json({
                 "status"    : "succes",
-                "data"      : docs
+                "data"      : docs,
+                "id"        : emailvantoken
             })
         }
     });
