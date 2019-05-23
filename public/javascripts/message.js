@@ -28,8 +28,10 @@ primus.on("data", function (data) {
 */  if(data.username != null){
     html += "<div class='messagewrapper'>";
     html += "<p id='pid"+data.messageid+"'>"+data.username+ " : <span id='spanmessage"+data.messageid+"'>"+data.input + "</span>";
-        html += "<button id ='"+data.messageid+"' onclick='deletethismessage(this)' class='btn btn--delete'>DEL</button>";
-        html += "<button id ='"+data.messageid+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+data.messageid+"'>UPD</button>";
+        if(data.username == usernamethisuser){
+            html += "<button id ='"+data.messageid+"' onclick='deletethismessage(this)' class='btn btn--delete'>DEL</button>";
+            html += "<button id ='"+data.messageid+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+data.messageid+"'>UPD</button>";
+        }
     html += "</div>";
     html += "<br>";
     html += "<input class='input hide' type='text' id='updateinput"+ data.messageid +"' value='"+ data.input +"'>";
