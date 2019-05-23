@@ -10,6 +10,10 @@ var primus = Primus.connect("/", {
 primus.on("data", function (data) {
     if(data.action == "clicked"){
         console.log(data.input);
+        let usernamethisuser = localStorage.getItem('email');
+        console.log(usernamethisuser);
+        let placetexthere = document.getElementById('displaymessages');
+        placetexthere.innerHTML  += "<p>" +usernamethisuser + " : "+ input + "</p>";
     }
 });
 
