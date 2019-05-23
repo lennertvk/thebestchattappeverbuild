@@ -12,6 +12,6 @@ router.get('/', function(req, res, next) {
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.put('/profile', authController.update);
-//router.get('/profile', authController.getAll);
+router.get('/get', authController.getAllSkills);
 
 module.exports = router;

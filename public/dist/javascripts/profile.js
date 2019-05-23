@@ -1,9 +1,11 @@
 void 0;
+
+let token = localStorage.getItem('token');
+
 let btnUpdateEmail = document
-  .querySelector('.form--btn--update')
+  .querySelector('.btn--update')
   .addEventListener('click', click => {
     let username = document.getElementById('email').value;
-    let token = localStorage.getItem('token');
     let skill = document.getElementById('skill').value;
   
         fetch ('https://thebestchatappever.herokuapp.com/users/profile',{
@@ -67,4 +69,28 @@ let btnUpdateEmail = document
           }
         });
     }
+  });
+
+
+
+window.onload= function(){
+    
+    fetch ("https://thebestchatappever.herokuapp.com/users/get")
+     
+    .then(function(response){
+      void 0
+      return response.json();
+      
+  })
   
+  .then(function(myJson){
+    let skillsArray = myJson.data[0].skills;
+    let html = "";
+    for(let i = 0; i < skillsArray.length; i++){
+
+      html += '<li>'+skillsArray[i]+'</li>'
+
+    document.querySelector(".display--skills").innerHTML = html;
+    }
+});
+}

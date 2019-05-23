@@ -56,8 +56,8 @@ const getOne= (req, res) => {
             res.json({
                 "status"    : "succes",
                 "data"      : {
-                    "id" : id,
-                    "docs" : docs
+                "id" : id,
+                "docs" : docs
                 }
             })
         }
