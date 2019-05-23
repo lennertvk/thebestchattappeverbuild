@@ -183,8 +183,8 @@ window.onload= function(){
                         html += "<button id ='"+messagesArray[i]._id+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+messagesArray[i]._id+"'>UPD</button>";
                         html += "</div>";
                         html += "<br>";
-                        html += "<input class='hide' type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
-                        html += "<button class='btnforupdate hide "+messagesArray[i]._id+"' id ='"+messagesArray[i]._id+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
+                        html += "<input class='input hide' type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
+                        html += "<button class='btn btn--update hide "+messagesArray[i]._id+"' id ='"+messagesArray[i]._id+"' onclick='updatethismessage(this);hidebtns(this)'>UPD</button>";
                         html += "</p>";                        
 
                         document.getElementById("displaymessages").innerHTML += html;

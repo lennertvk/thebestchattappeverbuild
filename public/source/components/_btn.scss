@@ -35,9 +35,16 @@
 .btn--delete{
   width: 100px;
   background-color: $primary;
+  float: right;
 }
 
 .btn--showupdate{
+  width: 100px;
+  background-color: $green;
+  float: right;
+}
+
+.btn--update{
   width: 100px;
   background-color: $green;
 }
