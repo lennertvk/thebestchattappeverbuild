@@ -168,8 +168,8 @@ window.onload= function(){
         });
             
 
-
-    fetch ('https://thebestchatappever.herokuapp.com/messages/get')
+let token = localStorage.getItem('token');
+    fetch (`https://thebestchatappever.herokuapp.com/messages/get/${token}`)
         .then(function(response){
             return response.json();
         })

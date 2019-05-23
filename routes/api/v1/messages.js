@@ -6,7 +6,7 @@ const getAllUserscontroller = require('../../../controllers/api/v1/allusers');
 
 
 
-router.get('/get', saveController.getAll);
+router.get('/get/:token', saveController.getAll);
 
 router.get('/get/:id', saveController.getOne);
 
