@@ -1,3 +1,5 @@
+// 4 lijnen hieronder moeten eruit!!
+
 localStorage.setItem("token", "token");
 localStorage.setItem("email", "email")
 // redirecten
