@@ -135,3 +135,12 @@ html
 .hide{
   display: none;
 }
+
+.displaymessages{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 45vh;
+  overflow-y: scroll;
+  width: 75vw;
+}

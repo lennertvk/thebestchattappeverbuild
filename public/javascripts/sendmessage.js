@@ -195,7 +195,7 @@ window.onload= function(){
         });
 
         document.getElementById('loggedin').innerHTML = localStorage.getItem('email');
-
+        $(".messages").animate({ scrollTop: $(document).height() }, "slow");
 };
 
 let showUpdate = (button) =>{
