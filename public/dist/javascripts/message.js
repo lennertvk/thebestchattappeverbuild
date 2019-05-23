@@ -11,9 +11,11 @@ primus.on("data", function (data) {
     if(data.action == "clicked"){
         //console.log(data.input);
         let usernamethisuser = localStorage.getItem('email');
+        let userid = localStorage.getItem('userid');
         void 0;
         let placetexthere = document.getElementById('displaymessages');
         let html = "";
+
         html += "<p>" +usernamethisuser + " : "+ data.input + "</p>";
 
 
@@ -22,7 +24,7 @@ primus.on("data", function (data) {
 
     }
 });
-
+/*
 document.getElementById('input').addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode;
     if (key === 13) { // 13 is enter
@@ -35,3 +37,4 @@ document.getElementById('input').addEventListener('keypress', function (e) {
         e.preventDefault();
     }
 });
+*/

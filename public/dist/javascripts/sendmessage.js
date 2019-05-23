@@ -123,6 +123,14 @@ document.getElementById('input').addEventListener('keypress', function (e) {
             "messageto": to
         })
     }).then(response => {
+        let input = document.getElementById('input').value;
+        primus.write({
+            "action": "clicked",
+            "input" : input
+        });
+        document.getElementById('input').value = "";
+        e.preventDefault();
+        
         return response.json();
  
     });
@@ -176,7 +184,7 @@ let token = localStorage.getItem('token');
         .then(function(myJson){
             let messagesArray = myJson.data;
             //console.log(userNameArray[0].userid);
-
+            localStorage.setItem('userid', myJson.id);
             for(let i = 0; i < messagesArray.length; i++){
                 let html = "";
                 for(let x=0; x < userNameArray['length']; x ++){
