@@ -123,14 +123,31 @@ document.getElementById('input').addEventListener('keypress', function (e) {
             "messageto": to
         })
     }).then(response => {
-        let input = document.getElementById('input').value;
-        primus.write({
-            "action": "clicked",
-            "input" : input
+        let token = localStorage.getItem('token');
+        fetch (`https://thebestchatappever.herokuapp.com/messages/get/${token}`)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(myJson){
+            let messagesArray = myJson.data;
+            let input = document.getElementById('input').value;
+            for(let i = 0; i < messagesArray.length; i++){
+                if(messagesArray[i].message == input){
+                    let messageid = messagesArray[i]._id;
+
+                    primus.write({
+                        "action": "clicked",
+                        "input" : input,
+                        "messageid" : messageid
+                    });
+                    document.getElementById('input').value = "";
+                    e.preventDefault();
+                }
+            }            
+            
         });
-        document.getElementById('input').value = "";
-        e.preventDefault();
         
+
         return response.json();
  
     });

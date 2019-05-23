@@ -16,7 +16,7 @@ primus.on("data", function (data) {
         let placetexthere = document.getElementById('displaymessages');
         let html = "";
 
-        html += "<p>" +usernamethisuser + " : "+ data.input + "</p>";
+        html += "<p id='"+data.messageid+"'>" +usernamethisuser + " : "+ data.input + "</p>";
 
 
         placetexthere.innerHTML  += html;
