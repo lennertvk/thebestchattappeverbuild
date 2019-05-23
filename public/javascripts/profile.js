@@ -1,5 +1,3 @@
-console.log("haloo");
-
 let token = localStorage.getItem('token');
 
 let btnUpdateEmail = document
@@ -42,8 +40,6 @@ let btnUpdateEmail = document
         });
     }
   });
-
-
 
 window.onload= function(){
     
