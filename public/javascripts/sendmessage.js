@@ -270,7 +270,7 @@ let hidebtns = (button) =>{
 let findById = ()=>{
     let input = document.getElementById('inputgetbyid').value;
     console.log(input);
-    fetch (`https://thebestchatappever.herokuapp.com/messages/get/${input}`)
+    fetch (`https://thebestchatappever.herokuapp.com/messages/getbyid/${input}`)
     .then(function(response){
         return response.json();
     })
