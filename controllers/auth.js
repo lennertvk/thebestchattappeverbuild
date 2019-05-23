@@ -158,7 +158,7 @@ console.log (id)
         if(!err){
             res.json({
                 "status" : "succes",
-                "data"   : docs, 
+                "data"   : docs 
             })
         }
     });
