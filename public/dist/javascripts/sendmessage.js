@@ -185,8 +185,10 @@ let token = localStorage.getItem('token');
                         //console.log(messagesArray[i]);
                         html += "<div class='messagewrapper'>";
                         html += "<p id='pid"+messagesArray[i]._id+"'>"+nameofuser+ " : <span id='spanmessage"+messagesArray[i]._id+"'>"+messagesArray[i].message + "</span>";
-                        html += "<button id ='"+messagesArray[i]._id+"' onclick='deletethismessage(this)' class='btn btn--delete'>DEL</button>";
-                        html += "<button id ='"+messagesArray[i]._id+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+messagesArray[i]._id+"'>UPD</button>";
+                        if(myJson.id == messagesArray[i].username){
+                            html += "<button id ='"+messagesArray[i]._id+"' onclick='deletethismessage(this)' class='btn btn--delete'>DEL</button>";
+                            html += "<button id ='"+messagesArray[i]._id+"' onclick='showUpdate(this)' class='btn btn--showupdate show"+messagesArray[i]._id+"'>UPD</button>";
+                        }
                         html += "</div>";
                         html += "<br>";
                         html += "<input class='input hide' type='text' id='updateinput"+ messagesArray[i]._id +"' value='"+ messagesArray[i].message +"'>";
