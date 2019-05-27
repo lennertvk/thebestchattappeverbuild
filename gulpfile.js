@@ -6,6 +6,7 @@ const {
 } = require('gulp');
 const sass = require('gulp-sass');
 const stripDebug = require('gulp-strip-debug');
+const minify = require('gulp-minify');
 const imagemin = require('gulp-imagemin');
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
@@ -47,6 +48,12 @@ function debug(done){
         done()
 };
 
+function minifyJs(done){
+    return src('./public/dist/javascripts/**.js')
+          .pipe(minify())
+          .pipe(gulp.dest('./public/dist/miniJavascripts/'))
+}
+
 watch("./public/images/",imagesMin);
 watch("./public/source/**.scss", sass2css);
 
@@ -58,6 +65,8 @@ var build = gulp.series(gulp.parallel(imagesMin, sass2css));
 module.exports.imagesMin = imagesMin;
 module.exports.sass2css =  sass2css;
 module.exports.debug =  debug;
+module.exports.minifyJs =  minifyJs;
+
 module.exports.build = build;
 
 //enkel de default laten runnen door commando gulp
