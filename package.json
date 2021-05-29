@@ -26,7 +26,7 @@
     "passport-local-mongoose": "^5.0.1",
     "primus": "^7.3.2",
     "sass-google-fonts": "^1.0.1",
-    "ws": "^7.0.0"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@bdchauvette/gulp-prettier": "^2.0.0",
